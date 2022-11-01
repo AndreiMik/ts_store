@@ -25,7 +25,7 @@
         <li class="li-top">newsletter subscribe</li>
         <div class="envelope_div">
           <img id="envelope" src="img/envelope.png" alt="">
-          <input id="envelope_input" name="email" type="text" placeholder="Enter your email address">
+          <input id="envelope_input" name="email" type="text" placeholder="Enter your email address"/>
           <button id="subscribe_btn" name="subscribe_btn" class='store_button'>subscribe</button>
         </div>
         <li><img id="verification_failed_img" src="" alt=""><span id="p_verification"> </span></li>       

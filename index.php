@@ -1,28 +1,9 @@
 <?php
-session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
+require "system/Routing.php";
+$url = $_SERVER['REQUEST_URI'];
 
-<?php require_once  'blocks/top.php';  ?>
-
-<div id="container">
-
-  <div id="strip-top"></div>
-
-  <?php require_once  'blocks/header.php';  ?>
-
-  <?php require_once  'blocks/menu.php';  ?>
-
-  <?php require_once  'blocks/main.php';  ?>
-
-  <?php require_once  'blocks/footer.php';  ?>
-
-
-</div>
-<!-- <script src="js.js"></script> -->
-<script src="js/cart.js"></script>
-</body>
-
-</html>
+$r = new Router();
+$r->addRoute("/", "main.php");
+$r->addRoute("/about", "pages/about.php");
+$r->addRoute("/feedback", "pages/feedback.php");
+$r->route($url);

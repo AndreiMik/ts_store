@@ -7,10 +7,10 @@ if (choosed_product_id_old.length != 0) {
     }
 }
 const products = [
-    { id: '1', name: 'belt', price: 50, offer: 0 },
-    { id: '2', name: 'hat', price: 50, offer: 25 },
-    { id: '3', name: 'scarf', price: 50, offer: 0 },
-    { id: '4', name: 'bag', price: 50, offer: 0 },
+    { id: "1", name: "belt", price: 50, offer: 0 },
+    { id: "2", name: "hat", price: 50, offer: 25 },
+    { id: "3", name: "scarf", price: 50, offer: 0 },
+    { id: "4", name: "bag", price: 50, offer: 0 },
 ];
 var tab1 = document.getElementById("tab1");
 var tab2 = document.getElementById("tab2");
@@ -20,16 +20,26 @@ var row_m2 = tab2.insertRow();
 for (let i = 0; i < products.length; i++) {
     var cell = row.insertCell();
     if (products[i].offer == 0) {
-        cell.innerHTML = "<img src='img/" + products[i].name + ".jpg'alt=''><br>"
-            + products[i].name + "<br>&euro;" + products[i].price.toFixed(2) +
-            "&euro;" +
-            "<br>";
+        cell.innerHTML =
+            "<img src='img/" +
+                products[i].name +
+                ".jpg'alt=''><br>" +
+                products[i].name +
+                "<br>&euro;" +
+                products[i].price.toFixed(2) +
+                "<br>";
     }
     else {
-        cell.innerHTML = "<img src='img/" + products[i].name + ".jpg'alt=''><br>"
-            + products[i].name + "<br><del>&euro;" + products[i].price.toFixed(2) +
-            "</del><span style='color: red;'>&euro;" + products[i].offer.toFixed(2) +
-            "<br>";
+        cell.innerHTML =
+            "<img src='img/" +
+                products[i].name +
+                ".jpg'alt=''><br>" +
+                products[i].name +
+                "<br><del>&euro;" +
+                products[i].price.toFixed(2) +
+                "</del><span style='color: red;'>&euro;" +
+                products[i].offer.toFixed(2) +
+                "</span><br>";
     }
     let button = createAddButton(products[i].id);
     cell.appendChild(button);
@@ -55,30 +65,52 @@ for (let i = 0; i < products.length; i++) {
     if (counter < 3) {
         var cell_m = row_m1.insertCell();
         if (products[i].offer == 0) {
-            cell_m.innerHTML = "<img src='img/" + products[i].name + ".jpg' alt=''><br>" + products[i].name +
-                "<br>&euro;" + products[i].price.toFixed(2) +
-                "<br>";
+            cell_m.innerHTML =
+                "<img src='img/" +
+                    products[i].name +
+                    ".jpg' alt=''><br>" +
+                    products[i].name +
+                    "<br>&euro;" +
+                    products[i].price.toFixed(2) +
+                    "<br>";
         }
         else {
-            cell_m.innerHTML = "<img src='img/" + products[i].name + ".jpg' alt=''><br>" + products[i].name +
-                "<br><del>&euro;" + products[i].price.toFixed(2) +
-                "</del><span style='color: red;'> &euro;" + products[i].offer.toFixed(2) +
-                "</span><br>";
+            cell_m.innerHTML =
+                "<img src='img/" +
+                    products[i].name +
+                    ".jpg' alt=''><br>" +
+                    products[i].name +
+                    "<br><del>&euro;" +
+                    products[i].price.toFixed(2) +
+                    "</del><span style='color: red;'> &euro;" +
+                    products[i].offer.toFixed(2) +
+                    "</span><br>";
         }
         cell_m.appendChild(button_m);
     }
     if (counter < 5 && counter > 2) {
         var cell_m = row_m2.insertCell();
         if (products[i].offer == 0) {
-            cell_m.innerHTML = "<img src='img/" + products[i].name + ".jpg' alt=''><br>" + products[i].name +
-                "<br>&euro;" + products[i].price.toFixed(2) +
-                "<br>";
+            cell_m.innerHTML =
+                "<img src='img/" +
+                    products[i].name +
+                    ".jpg' alt=''><br>" +
+                    products[i].name +
+                    "<br>&euro;" +
+                    products[i].price.toFixed(2) +
+                    "<br>";
         }
         else {
-            cell_m.innerHTML = "<img src='img/" + products[i].name + ".jpg' alt=''><br>" + products[i].name +
-                "<br><del>&euro;" + products[i].price.toFixed(2) +
-                "</del><span style='color: red;'> &euro;" + products[i].offer.toFixed(2) +
-                "</span><br>";
+            cell_m.innerHTML =
+                "<img src='img/" +
+                    products[i].name +
+                    ".jpg' alt=''><br>" +
+                    products[i].name +
+                    "<br><del>&euro;" +
+                    products[i].price.toFixed(2) +
+                    "</del><span style='color: red;'> &euro;" +
+                    products[i].offer.toFixed(2) +
+                    "</span><br>";
         }
         cell_m.appendChild(button_m);
     }
@@ -145,9 +177,11 @@ function fillData(id) {
             product_price = products[id - 1].price;
         }
         choosed_products.push({
-            "id": id, "name": products[id - 1]["name"],
-            "price": product_price, "count": count_id[id],
-            "offer": products[id - 1]["offer"]
+            id: id,
+            name: products[id - 1]["name"],
+            price: product_price,
+            count: count_id[id],
+            offer: products[id - 1]["offer"],
         });
     }
     let total_price = 0;
@@ -160,7 +194,7 @@ function fillData(id) {
     var Order_Data = {
         products: choosed_products,
         price: total_price,
-        amount: choosed_product_id.length
+        amount: choosed_product_id.length,
     };
     localStorage.setItem("choosed_product_id", JSON.stringify(choosed_product_id));
     localStorage.setItem("Order_Data", JSON.stringify(Order_Data));
@@ -177,7 +211,8 @@ function fillCart() {
         return;
     }
     var cart_amount = document.getElementById("span_count");
-    cart_amount.innerHTML = Order_Data.amount.toString() + " item(s) in your cart";
+    cart_amount.innerHTML =
+        Order_Data.amount.toString() + " item(s) in your cart";
     var cart_price = document.getElementById("strong_sum");
     cart_price.innerHTML = "&euro;" + Order_Data.price.toFixed(2).toString();
     let div_cart = document.getElementById("cart_content_div");
@@ -210,14 +245,20 @@ function fillCart() {
         let tr_1_m = table_li_m.insertRow();
         let td_1_1 = tr_1.insertCell();
         let td_1_1_m = tr_1_m.insertCell();
-        td_1_1.style.position = 'relative';
-        td_1_1_m.style.position = 'relative';
-        td_1_1.style.width = '50px';
-        td_1_1_m.style.width = '50px';
+        td_1_1.style.position = "relative";
+        td_1_1_m.style.position = "relative";
+        td_1_1.style.width = "50px";
+        td_1_1_m.style.width = "50px";
         td_1_1.rowSpan = 2;
         td_1_1_m.rowSpan = 2;
-        td_1_1.innerHTML = '<img class="cart_product_img" src="img/' + Order_Data.products[i].name + '.jpg" alt="">';
-        td_1_1_m.innerHTML = '<img class="cart_product_img" src="img/' + Order_Data.products[i].name + '.jpg" alt="">';
+        td_1_1.innerHTML =
+            '<img class="cart_product_img" src="img/' +
+                Order_Data.products[i].name +
+                '.jpg" alt="">';
+        td_1_1_m.innerHTML =
+            '<img class="cart_product_img" src="img/' +
+                Order_Data.products[i].name +
+                '.jpg" alt="">';
         let td_1_2 = tr_1.insertCell();
         let td_1_2_m = tr_1_m.insertCell();
         td_1_2.innerHTML = Order_Data.products[i].name;
@@ -226,13 +267,13 @@ function fillCart() {
         let td_1_3_m = tr_1_m.insertCell();
         td_1_3.rowSpan = 2;
         td_1_3_m.rowSpan = 2;
-        td_1_3.style.position = 'relative';
-        td_1_3_m.style.position = 'relative';
-        td_1_3.style.width = '40px';
-        td_1_3_m.style.width = '40px';
+        td_1_3.style.position = "relative";
+        td_1_3_m.style.position = "relative";
+        td_1_3.style.width = "40px";
+        td_1_3_m.style.width = "40px";
         function createDeleteButton() {
             let button = document.createElement("button");
-            button.name = 'deleted_element_id';
+            button.name = "deleted_element_id";
             button.id = Order_Data.products[i].id.toString();
             button.setAttribute("class", "btn_del");
             return button;
@@ -255,12 +296,18 @@ function fillCart() {
         let tr_2_m = table_li_m.insertRow();
         let td_2_1 = tr_2.insertCell();
         let td_2_1_m = tr_2_m.insertCell();
-        td_2_1.innerHTML = Order_Data.products[i].count.toString() + "x" +
-            Order_Data.products[i].price + "=&euro;" +
-            (Order_Data.products[i].price * Order_Data.products[i].count);
-        td_2_1_m.innerHTML = Order_Data.products[i].count.toString() + "x" +
-            Order_Data.products[i].price + "=&euro;" +
-            (Order_Data.products[i].price * Order_Data.products[i].count);
+        td_2_1.innerHTML =
+            Order_Data.products[i].count.toString() +
+                "x" +
+                Order_Data.products[i].price +
+                "=&euro;" +
+                Order_Data.products[i].price * Order_Data.products[i].count;
+        td_2_1_m.innerHTML =
+            Order_Data.products[i].count.toString() +
+                "x" +
+                Order_Data.products[i].price +
+                "=&euro;" +
+                Order_Data.products[i].price * Order_Data.products[i].count;
         deleteButton.onclick = function () {
             let idSTR = deleteButton.id;
             let id = +idSTR;
@@ -269,7 +316,8 @@ function fillCart() {
             fillData(id);
             Order_Data = getOrderDataFromLocalstorage();
             var cart_amount = document.getElementById("span_count");
-            cart_amount.innerHTML = Order_Data.amount.toString() + " item(s) in your cart";
+            cart_amount.innerHTML =
+                Order_Data.amount.toString() + " item(s) in your cart";
             var cart_price = document.getElementById("strong_sum");
             cart_price.innerHTML = "&euro;" + Order_Data.price.toFixed(2).toString();
             let div_cart = document.getElementById("cart_content_div");
@@ -290,7 +338,8 @@ function fillCart() {
             fillData(id);
             Order_Data = getOrderDataFromLocalstorage();
             var cart_amount = document.getElementById("span_count");
-            cart_amount.innerHTML = Order_Data.amount.toString() + " item(s) in your cart";
+            cart_amount.innerHTML =
+                Order_Data.amount.toString() + " item(s) in your cart";
             var cart_price = document.getElementById("strong_sum");
             cart_price.innerHTML = "&euro;" + Order_Data.price.toFixed(2).toString();
             let div_cart_m = document.getElementById("cart_mob-list");
@@ -316,7 +365,7 @@ button_subscribe.onclick = function () {
 function emailValidate() {
     var email_text = input_envelope.value;
     var regex = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/;
-    if (regex.test(email_text) == true && email_text !== '') {
+    if (regex.test(email_text) == true && email_text !== "") {
         p_verification.setAttribute("class", "verification_ok_p");
         p_verification.innerHTML = "Subscription successful.";
         img_verification_failed.setAttribute("src", "img/ok_icon.png");
